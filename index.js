@@ -47,6 +47,7 @@ app.use(
     saveUninitialized: false,
     secret: 'secret',
     store: new MongoStore({ mongooseConnection: db }),
+    cookie: { secure: true, sameSite: 'none' },
   })
 );
 
