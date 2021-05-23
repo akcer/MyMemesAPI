@@ -9,7 +9,7 @@ const Comments = require('./routes/comments.js');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
+const MongoStore = require('connect-mongo');
 const port = process.env.PORT || 3001;
 const app = express();
 
@@ -46,8 +46,8 @@ app.use(
     resave: false,
     saveUninitialized: false,
     secret: 'secret',
-    store: new MongoStore({ mongooseConnection: db }),
-    cookie: { secure: true, sameSite: 'none', httpOnly: false },
+    store:  MongoStore.create({ mongoUrl: process.env.MONGODB_HOST }),
+    cookie: { secure: true, sameSite: 'none', httpOnly: true },
   })
 );
 
