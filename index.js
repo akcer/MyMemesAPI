@@ -43,10 +43,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   session({
+    proxy: true,
     resave: false,
     saveUninitialized: false,
     secret: 'secret',
-    store:  MongoStore.create({ mongoUrl: process.env.MONGODB_HOST }),
+    store: MongoStore.create({ mongoUrl: process.env.MONGODB_HOST }),
     cookie: { secure: true, sameSite: 'none', httpOnly: true },
   })
 );
