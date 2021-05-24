@@ -41,14 +41,19 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+const isProduction = process.env.NODE_ENV === 'production';
 app.use(
   session({
-    proxy: true,
+    proxy: isProduction ? true : undefined,
     resave: false,
     saveUninitialized: false,
     secret: 'secret',
     store: MongoStore.create({ mongoUrl: process.env.MONGODB_HOST }),
-    cookie: { secure: true, sameSite: 'none', httpOnly: true },
+    cookie: {
+      secure: isProduction ? true : false,
+      sameSite: isProduction ? 'none' : false,
+      httpOnly: true,
+    },
   })
 );
 
