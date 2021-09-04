@@ -42,6 +42,7 @@ $ touch .env
 NODE_ENV=development
 PORT=3001
 CLIENT_HOST=http://localhost:3000
+ANGULAR_APP_HOST=http://localhost:4200
 MOBILE_APP_HOST=http://localhost:19006
 LOCAL_MACHINE_HOST= your local machine host
 MONGODB_HOST=mongodb://localhost/mymemes
@@ -56,7 +57,7 @@ $ npm install
 - Run the development server:
 
 ```
-$ npm start
+$ npm run dev
 ```
 
 - Go to http://localhost:3001 to access the API.
