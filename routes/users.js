@@ -56,7 +56,7 @@ router.get('/logout', (req, res, next) => {
       return next(err);
     }
     res.clearCookie('connect.sid');
-    res.send('logout success');
+    res.json('logout success')
   });
 });
 
