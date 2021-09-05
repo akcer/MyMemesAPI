@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Comment = require('../models/comment.js');
+const isLoggedIn = require('../utils/isLoggedInMiddleware');
+
 
 router.get('/:id', (req, res, next) => {
   Comment.find({ meme: req.params.id })
@@ -12,7 +14,7 @@ router.get('/:id', (req, res, next) => {
     });
 });
 
-router.post('/add', (req, res, next) => {
+router.post('/add',isLoggedIn, (req, res, next) => {
   Comment.create({
     author: req.user._id,
     ...req.body,

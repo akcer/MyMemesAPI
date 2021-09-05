@@ -5,6 +5,7 @@ const Meme = require('../models/meme.js');
 const multerConfig = require('../utils/multerConfig.js');
 const upload = multerConfig('memes');
 const deleteMemeImage = require('../utils/deleteMemeImage');
+const isLoggedIn = require('../utils/isLoggedInMiddleware');
 
 router.get('/', (req, res, next) => {
   let sort = '';
@@ -75,7 +76,7 @@ router.get('/count', (req, res, next) => {
   });
 });
 
-router.post('/add', upload.single('imageFile'), (req, res, next) => {
+router.post('/add',isLoggedIn, upload.single('imageFile'), (req, res, next) => {
   if (!req.file) {
     throw new Error('Image Is Required');
   }
@@ -120,7 +121,7 @@ router.delete('/:id', (req, res, next) => {
 });
 
 //LIKE
-router.patch('/like/:id', (req, res, next) => {
+router.patch('/like/:id', isLoggedIn, (req, res, next) => {
   //if meme previously was disliked remove dislike
   Meme.findOneAndUpdate(
     {
@@ -196,7 +197,7 @@ router.patch('/like/:id', (req, res, next) => {
   });
 });
 //DISLIKE
-router.patch('/dislike/:id', (req, res, next) => {
+router.patch('/dislike/:id', isLoggedIn, (req, res, next) => {
   //if meme previously was liked remove like
   Meme.findOneAndUpdate(
     {
