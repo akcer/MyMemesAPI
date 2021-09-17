@@ -1,6 +1,6 @@
 # MyMemesAPI
 
-API for [MyMemes](https://github.com/akcer/MyMemes) and [MyMemesNative](https://github.com/akcer/MyMemesNative) projects
+API for [MyMemes](https://github.com/akcer/MyMemes), [MyMemesAngular](https://github.com/akcer/MyMemesAnglar) and [MyMemesNative](https://github.com/akcer/MyMemesNative) projects
 
 ## Demo
 

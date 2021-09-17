@@ -35,6 +35,7 @@ app.use(
       `${process.env.CLIENT_HOST}`,
       `${process.env.MOBILE_APP_HOST}`,
       `${process.env.LOCAL_MACHINE_HOST}`,
+      `${process.env.ANGULAR_APP_HOST}`,
     ],
   })
 );
